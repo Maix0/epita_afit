@@ -6,18 +6,19 @@ primitives to suit maths conventions.
 
  **)
 
+val sign : int -> int
 (** Sign function
     @param x integer
 *)
-val sign : int -> int
 
+val quot : int -> int -> int
 (** Quotient of two natural numbers.
     This is the quotient in euclidiant division sense.
     @param a dividend
     @param b natural number you divide by.
  *)
-val quot : int -> int -> int
 
+val modulo : int -> int -> int
 (** Modulo of two integers.
     Following euclidean division NOT OCAML DEFAULT. Positive integer
     between 0 (included) and modulo (excluded) resulting from euclidian
@@ -28,8 +29,8 @@ val quot : int -> int -> int
     @param a input integer
     @param b moduli integer.
  *)
-val modulo : int -> int -> int
 
+val div : int -> int -> int * int
 (** Division of an integer by a natural number. NOT OCAML DEFAULT.
     Division of an integer by a non-zero integer b is the unique couple
     of integers (q, r) such that a = b*q + r and r is in interval 0, abs b
@@ -37,4 +38,3 @@ val modulo : int -> int -> int
     @param a dividend
     @param b integer you divide by.
 *)
-val div : int -> int -> (int*int)

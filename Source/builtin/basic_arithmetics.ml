@@ -6,7 +6,7 @@ open Builtin
     @param a non-zero integer
     @param b non-zero integer
 *)
-let rec gcd a b = 0
+let rec gcd a b = abs (if b = 0 then a else gcd b (modulo a b))
 
 (** Extended euclidean division of two integers NOT OCAML DEFAULT.
     Given non-zero entries a b computes triple (u, v, d) such that

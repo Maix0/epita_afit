@@ -22,7 +22,6 @@ let encrypt_cesar k m b = []
  *)
 let decrypt_cesar k m b = []
 
-
 (********** RSA Cipher **********)
 
 (** Generate an RSA ciphering keys.
@@ -43,8 +42,7 @@ let encrypt_rsa m (n, e) = 0
     @param m integer hash of encrypter message.
     @param pub_key a tuple (n, d) composing private key of RSA cryptosystem.
  *)
-let decrypt_rsa m (n , d) = 0
-
+let decrypt_rsa m (n, d) = 0
 
 (********** ElGamal Cipher **********)
 

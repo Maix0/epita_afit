@@ -24,13 +24,10 @@ let write_list li file = ()
 *)
 let write_list_primes n file = ()
 
-
 (** Read file safely ; catch End_of_file exception.
     @param in_c input channel.
  *)
-let input_line_opt in_c =
-  try Some (input_line in_c)
-  with End_of_file -> None
+let input_line_opt in_c = try Some (input_line in_c) with End_of_file -> None
 
 (** Create a list out of reading a line per line channel.
     @param in_c input channel.
@@ -38,7 +35,7 @@ let input_line_opt in_c =
 let create_list in_c =
   let rec _create_list in_c =
     match input_line_opt in_c with
-    | Some line -> (int_of_string line)::(_create_list in_c)
+    | Some line -> int_of_string line :: _create_list in_c
     | None -> []
   in
   _create_list in_c
@@ -51,18 +48,20 @@ let read_list_primes file = []
 (** Get biggest prime.
     @param l list of prime numbers.
  *)
-let rec last_element l = match l with
+let rec last_element l =
+  match l with
   | [] -> failwith "You're list is empty. "
-  | e::[] -> e
-  | h::t -> last_element t
+  | [ e ] -> e
+  | h :: t -> last_element t
 
 (** Get two biggest primes.
     @param l list of prime numbers.
  *)
-let rec last_two l = match l with
-  | [] | [_] -> failwith "List has to have at least two prime numbers."
-  | e::g::[] -> (e, g)
-  | h::t -> last_two t
+let rec last_two l =
+  match l with
+  | [] | [ _ ] -> failwith "List has to have at least two prime numbers."
+  | [ e; g ] -> (e, g)
+  | h :: t -> last_two t
 
 (** Finding couples of primes where second entry is twice the first
     plus 1.
