@@ -7,13 +7,18 @@ open Basic_arithmetics
     @param x base
     @param n exponent
  *)
-let pow x n = 0
+let pow x n = let rec inner = function
+    | 0 -> if x = 0 then failwith "0 power 0 isn't defined" else 1
+    | 1 -> x
+    | n -> x * (inner (n-1))   
+    in inner n;;
 
 (** Fast integer exponentiation function. Logarithmic complexity.
     @param x base
     @param n exponent
  *)
-let power x n = 0
+let power x n = if n mod 2 = 0 then 
+    (power (x*x) (n/2) else x * power (x * x) (n/2 - 1);
 
 (** Fast modular exponentiation function. Logarithmic complexity.
     @param x base
