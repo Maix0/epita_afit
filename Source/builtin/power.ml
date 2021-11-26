@@ -6,7 +6,7 @@ open Basic_arithmetics
 (** Naive power function. Linear complexity
     @param x base
     @param n exponent
- *)
+*)
 let pow x n =
   let rec inner = function
     | 0 -> if x = 0 then failwith "0 power 0 isn't defined" else 1
@@ -18,7 +18,7 @@ let pow x n =
 (** Fast integer exponentiation function. Logarithmic complexity.
     @param x base
     @param n exponent
- *)
+*)
 let power x n =
   let rec inner a b =
     (*Printf.printf "a=%d|b=%d" a b;*)
@@ -34,7 +34,7 @@ let power x n =
     @param x base
     @param n exponent
     @param m modular base
- *)
+*)
 let mod_power x n m =
   let rec inner a b c =
     if a = 0 then 0
@@ -55,5 +55,5 @@ let mod_power x n m =
     @param x base
     @param n exponent
     @param p prime modular base
- *)
-let prime_mod_power x n p = 0
+*)
+let prime_mod_power x n p = mod_power x (modulo n (p - 1)) p

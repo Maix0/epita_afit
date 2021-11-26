@@ -62,6 +62,7 @@ let mod_power_tests () =
 let prime_mod_power_tests () =
   let cases =
     [
+      ((5, 9, 7), 6);
       ((-1, 12, 7), 1);
       ((-1, 11, 11), 10);
       ((0, 2, 3), 0);

@@ -16,5 +16,5 @@ let is_prime n =
 (** Primality test based on small Fermat theorem
     @param p tested integer
     @param testSeq sequence of integers against which to test
- *)
-let is_pseudo_prime p test_seq = true
+*)
+let is_pseudo_prime p test_seq = 
