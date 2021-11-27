@@ -53,6 +53,7 @@ let mod_power_tests () =
       ((-2, 3, 9), 1);
       ((2, 5, 17), 15);
       ((3, 3, 17), 10);
+      ((15,86,14), 1);
     ]
   and do_check ((x, n, m), expected) =
     check int (sprintf "%i^%i [%i]" x n m) expected (mod_power x n m)

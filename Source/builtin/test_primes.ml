@@ -17,4 +17,10 @@ let is_prime n =
     @param p tested integer
     @param testSeq sequence of integers against which to test
 *)
-let is_pseudo_prime p test_seq = 
+let is_pseudo_prime p test_seq =
+  let rec loop = function
+    | [] -> true
+    | a :: t ->
+        (if modulo a p = 0 then true else mod_power a (p - 1) p = 1) && loop t
+  in
+  loop test_seq

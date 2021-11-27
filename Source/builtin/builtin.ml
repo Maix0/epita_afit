@@ -17,13 +17,9 @@ let sign x = if x >= 0 then 1 else -1
     @param b natural number you divide by.
  *)
 let quot a b =
-    if a < 0 && b < 0 then
-        (a/b) + 1
-    else if a mod b < 0 then
-        (a/b) - 1
-    else 
-        a/b ;;
-
+  if a < 0 && b < 0 then (a / b) + 1
+  else if a mod b < 0 then (a / b) - 1
+  else a / b
 
 (** Quotient of two integers. Fully Recursive.
     General case ; explicit by-hand computations. Not efficient enough as

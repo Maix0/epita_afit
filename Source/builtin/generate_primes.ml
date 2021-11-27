@@ -6,12 +6,31 @@ open Basic_arithmetics
 (** List composed of 2 and then odd integers starting at 3.
     @param n limit of list of odd integers, minimum value is 2.
  *)
-let init_eratosthenes n = []
+let init_eratosthenes n =
+  let rec loop = function x when x > n -> [] | x -> x :: loop (x + 2) in
+  2 :: loop 3
 
 (** Eratosthene sieve.
     @param n limit of list of primes, starting at 2.
 *)
-let eratosthenes n = []
+let eratosthenes n =
+  let rec remove_div div = function
+    | [] -> []
+    | e :: t ->
+        (if modulo e div = 0 && e <> div then 0 else e) :: remove_div div t
+  in
+  let rec loop list = function
+    | [] -> list
+    | 0 :: t -> loop list t
+    | e :: t -> loop (remove_div e list) t
+  in
+  let sieve = init_eratosthenes n in
+  let rec remove_zero = function
+    | [] -> []
+    | 0 :: t -> remove_zero t
+    | x :: t -> x :: remove_zero t
+  in
+  remove_zero (loop sieve sieve)
 
 (** Write a list into a file. Element seperator is newline.
     @param file path to write to.
@@ -68,10 +87,25 @@ let rec last_two l =
     @param limit positive integer bounding searched for primes.
     @param isprime function testing for (pseudo)primality.
  *)
-let double_primes limit isprime = []
+let double_primes limit isprime =
+  let rec loop = function
+    | x when x > limit -> []
+    | x ->
+        if isprime x && isprime ((x * 2) + 1) then
+          (x, (x * 2) + 1) :: loop (x + 1)
+        else loop (x + 1)
+  in
+  loop 2
 
 (** Finding twin primes.
     @param limit positive integer bounding searched for primes.
     @param isprime function testing for (pseudo)primality.
  *)
-let twin_primes limit isprime = []
+let twin_primes limit isprime =
+  let rec loop = function
+    | x when x > limit -> []
+    | x ->
+        if isprime x && isprime (x + 2) then (x, x + 2) :: loop (x + 1)
+        else loop (x + 1)
+  in
+  loop 2
