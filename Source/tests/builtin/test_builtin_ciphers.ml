@@ -89,7 +89,7 @@ let decrypt_rsa_tests () =
 (* Test for ElGamal *)
 
 let el_gamal_tests () =
-  let cases = [ (100000007, 42) ]
+  let cases = [ (100000007, 42);(131221, 42);(163481, 42) ]
   and do_check (p, msg) =
     (* No need for an expected value, we encrypt and decrypt a message so
      * the expected result is the original message *)
