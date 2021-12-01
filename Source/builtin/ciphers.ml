@@ -90,8 +90,9 @@ let rec public_data_g p =
             | [] -> false
             | e :: t -> mod_power n (quot (p - 1) e) p = 1 || loop_s t
           in
-           if loop_s s then loop (n+1) else n
-    in loop 2
+          if loop_s s then loop (n + 1) else n
+    in
+    loop 2
   in
   (find_prim_root (), p)
 
@@ -127,10 +128,5 @@ let encrypt_g msg (g, p) kA =
     @param pub_data a tuple (g, p) of public data for ElGamal cryptosystem.
  *)
 let decrypt_g (msgA, msgB) a (g, p) =
-  let _ =
-    Printf.printf "msgA: %d msgB: %d \n" msgA msgB;
-    Printf.printf "sp: %d   quot: %d \n" (mod_power msgB a p)
-      (quot msgA (mod_power msgB a p))
-  in
   let sp = mod_power msgA a p in
   quot msgB sp
