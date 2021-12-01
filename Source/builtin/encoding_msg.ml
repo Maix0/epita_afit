@@ -20,4 +20,12 @@ let encode str bits =
   in
   loop_chr (String.length str - 1)
 
-let decode msg bits = ""
+let decode msg bits =
+  let fullbits =
+    let rec f = function 0 -> 1 | n -> f (n - 1) lor (1 lsl (n-1)) in
+    f bits
+  in
+  let rec build_msg = function 
+    | 0 -> ""
+    | msg -> build_msg (msg lsr bits) ^ String.make 1 (Char.chr (msg land fullbits))
+in build_msg msg
