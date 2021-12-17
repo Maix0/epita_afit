@@ -14,7 +14,7 @@ open Scalable_power
     @param p prime bitarray
     @param q prime bitarray
 *)
-let generate_keys_rsa p q = (([],[]), ([], []))
+let generate_keys_rsa p q = (([], []), ([], []))
 
 (** Encryption using RSA cryptosystem.
     @param m bitarray hash of message
@@ -26,7 +26,7 @@ let encrypt_rsa m (n, e) = []
     @param m bitarray hash of encrypted message.
     @param pub_key a tuple (n, d) composing private key of RSA cryptosystem.
  *)
-let decrypt_rsa m (n , d) = []
+let decrypt_rsa m (n, d) = []
 
 (********** ElGamal Cipher **********)
 

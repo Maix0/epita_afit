@@ -29,9 +29,7 @@ let write_list_primes n file = ()
 (** Read file safely ; catch End_of_file exception.
     @param in_c input channel.
  *)
-let input_line_opt in_c =
-  try Some (input_line in_c)
-  with End_of_file -> None
+let input_line_opt in_c = try Some (input_line in_c) with End_of_file -> None
 
 (** Create a list of bitarrays out of reading a line per line channel.
     @param in_c input channel.  *)
@@ -45,20 +43,24 @@ let read_list_primes file = []
 (** Get last element of a list.
     @param l list of prime bitarrays.
  *)
-let rec last_element l = match l with
-  | [] -> failwith "Scalable.generate_primes.last_element: Youre list \
-                    is empty. "
-  | e::[] -> e
-  | h::t -> last_element t
+let rec last_element l =
+  match l with
+  | [] ->
+      failwith "Scalable.generate_primes.last_element: Youre list is empty. "
+  | [ e ] -> e
+  | h :: t -> last_element t
 
 (** Get two last elements.
     @param l list of prime bitarrays.
  *)
-let rec last_two l = match l with
-  | [] | [_] -> failwith "Scalable.generate_primes.last_two: List has \
-                          to have at least two elements."
-  | e::g::[] -> (e, g)
-  | h::t -> last_two t
+let rec last_two l =
+  match l with
+  | [] | [ _ ] ->
+      failwith
+        "Scalable.generate_primes.last_two: List has to have at least two \
+         elements."
+  | [ e; g ] -> (e, g)
+  | h :: t -> last_two t
 
 (** Finding couples of prime bitarrays where second entry is twice the
     first plus 1.
