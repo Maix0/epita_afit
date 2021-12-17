@@ -342,7 +342,7 @@ let quot_b bA bB =
     @param bA Bitarray the modulo of which you're computing.
     @param bB Bitarray which is modular base.
  *)
-let mod_b bA bB = abs_b (diff_b ((mult_b bB  (quot_b bA bB))  bA))
+let mod_b bA bB = abs_b (diff_b ((mult_b bB  (quot_b bA bB)) ) bA)
 
 (** Integer division of two bitarrays.
     @param bA Bitarray you want to divide.
