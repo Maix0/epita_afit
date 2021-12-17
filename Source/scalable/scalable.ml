@@ -316,10 +316,6 @@ let mult_b bA bB =
     @param bB Bitarray you divide by. Non-zero!
 *)
 let quot_b bA bB =
-  let checked_zero l =
-    let rec loop = function [] -> true | e :: t -> e = 0 && loop t in
-    if loop l then [] else l
-  in
   match (bA, bB) with
   | _, [] -> invalid_arg "Division by zero"
   | s :: t, [ 1; 1 ] -> (s lxor 1) :: t
